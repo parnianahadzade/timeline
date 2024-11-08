@@ -1,0 +1,121 @@
+/* Basic Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f3f4f6;
+}
+
+.timeline {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 10px 0;
+}
+
+/* Timeline line */
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: #cfd8dc;
+    transform: translateX(-50%);
+}
+
+/* Timeline item styling */
+.timeline-item {
+    padding: 30px 20px;
+    position: relative;
+    width: 50%;
+    margin-bottom: 30px; /* Add more space between items */
+}
+
+.timeline-item::before {
+    content: attr(data-year);
+    position: absolute;
+    top: 10px;
+    width: 40px; /* Increased circle size */
+    height: 40px; /* Increased circle size */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #5c6bc0;
+    color: #ffffff;
+    font-size: 1em; /* Slightly bigger font size */
+    font-weight: bold;
+    border-radius: 50%;
+    border: 3px solid #ffffff;
+}
+
+.timeline-item:nth-child(odd) {
+    left: 0;
+}
+
+.timeline-item:nth-child(odd)::before {
+    right: -20px; /* Adjusted the position of the circles */
+}
+
+.timeline-item:nth-child(even) {
+    left: 50%;
+}
+
+.timeline-item:nth-child(even)::before {
+    left: -20px; /* Adjusted the position of the circles */
+}
+
+/* Adjusting spacing for even items (event 2, 4, etc.) */
+.timeline-item:nth-child(even) {
+    padding-left: 60px; /* More space between the event content and the circle */
+}
+
+.timeline-item:nth-child(odd) {
+    padding-right: 60px; /* More space between the event content and the circle */
+}
+
+.timeline-item h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #37474f;
+}
+
+.timeline-item p {
+    color: #607d8b;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .timeline::before {
+        left: 20px;
+    }
+
+    .timeline-item {
+        width: 100%;
+        padding-left: 40px;
+        padding-right: 20px;
+        margin-bottom: 40px; /* More space between items */
+    }
+
+    .timeline-item:nth-child(odd),
+    .timeline-item:nth-child(even) {
+        left: 0;
+    }
+
+    .timeline-item:nth-child(odd)::before,
+    .timeline-item:nth-child(even)::before {
+        left: 10px;
+    }
+}
+
+
+
+
